@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+	<h1> Welcome {{user.username}} </h1>
+	<body>
+		<center>
+		
+		<table border="5">
+		<tr>
+			<th>Rno</th>
+			<th>Name</th>
+			<th>Marks</th>
+			<th>Delete</th>
+		</tr>
+		{% for d in data %}
+		<tr style="text-align:center;">
+			<td>{{ d.rno }}</td>
+			<td>{{ d.name }}</td>
+			<td>{{ d.marks }}</td>
+			<td><a href="{% url 'remove' id=d.rno %}" onclick="return confirm('Are you sure?')">Delete</a></td>
+		</tr>
+		{% empty %}
+		<tr style="text-align:center;>
+			<td colspan="1">No Data Found</td>
+		{% endfor %}
+		</tr>
+		</table>
+		</center>
+	</body>
+{% endblock %}
